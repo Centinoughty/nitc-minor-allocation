@@ -26,7 +26,7 @@ export default function Home() {
     const isUserLoggedIn = async () => {
       const userId = localStorage.getItem("userId");
       if (userId) {
-        router.push("/courses");
+        router.push("/Dashboard");
       }
     };
 

@@ -26,7 +26,6 @@ export default function Courses() {
       setCoursesList(data);
       setIsLoading(false);
     } catch (error: any) {
-      console.log(error);
       if (error.response?.status === 401 || error.response?.status === 403) {
       localStorage.removeItem("accessToken");
       localStorage.removeItem("userId");
