@@ -3,7 +3,7 @@ import axios from "axios";
 
 const fetchUserData = async (req: NextApiRequest, res: NextApiResponse) => {
     try{
-        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/students/student/${req.query.id}`,{
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/students/student`,{
             headers: {
                 authorization: req.headers.authorization
         }});

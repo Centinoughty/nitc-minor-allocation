@@ -320,7 +320,7 @@ export default function Allotment() {
   const accessToken = localStorage.getItem('accessToken');
     try {
       const response = await fetch(
-        `${BASE_URL}/students/student/${loggedInUser}/verify`,
+        `${BASE_URL}/students/student/verify`,
         {
           method: "PATCH",
           headers: {
