@@ -24,7 +24,7 @@ const Callback: React.FC = () => {
       localStorage.setItem('userId', userId);
 
       // Redirect to the protected page (e.g., dashboard)
-      router.push('/courses');
+      router.push('/dashboard');
     } else {
       // Handle error
       console.error('JWT token is missing');

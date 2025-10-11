@@ -22,23 +22,32 @@ export default function Home() {
       progress: undefined,
     });
 
-  React.useEffect(() => {
-    const isUserLoggedIn = async () => {
-      const userId = localStorage.getItem("userId");
+    React.useEffect(() => {
+    const handleAuthStatus = async () => {
+      const { failed, userId } = router.query;
+
+      // If login failed, show toast
+      if (failed) {
+        console.error("Login failed");
+        failureNotify();
+      }
+
+      // If successful login (backend redirected with ?userId=XYZ)
       if (userId) {
-        router.push("/Dashboard");
+        localStorage.setItem("userId", userId as string);
+        router.push("/dashboard");
+        return;
+      }
+
+      // If already logged in, redirect to dashboard
+      const existingUser = localStorage.getItem("userId");
+      if (existingUser) {
+        router.push("/dashboard");
       }
     };
 
-    // Check for the 'failed' query parameter
-    const isFailed = router.query.failed;
-    if (isFailed) {
-      console.error("Login failed");
-      failureNotify(); // Show notification immediately
-    }
-
-    isUserLoggedIn();
-  }, []);
+    if (router.isReady) handleAuthStatus();
+  }, [router.isReady, router.query]);
 
   return (
     <div
