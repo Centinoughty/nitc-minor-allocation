@@ -219,7 +219,6 @@ export default function Allotment() {
       console.log("Response: ", response);
       setAllChoices(data);
     } catch (error: any) {
-      console.log("e", error);
       if (error.response?.status === 401 || error.response?.status === 403 || error.response?.status === 500  ) {
         // token invalid
         localStorage.clear();
@@ -341,7 +340,6 @@ export default function Allotment() {
         alert("Failed to verify");
       }
     } catch (error: any) {
-      console.error(error);
       // fallback for network or other errors
       if (error.response?.status === 401 || error.response?.status === 403) {
         localStorage.removeItem("accessToken");
