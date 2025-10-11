@@ -1,0 +1,9 @@
+#ignore node modules
+node_modules
+
+.vscode
+.env
+
+public/assets
+
+request.rest
