@@ -19,13 +19,13 @@ router.post("/csv", createStudentsFromCSV);
 
 // READ
 router.get("/", authToken, getStudents);
-router.get("/student/:id", authToken, getStudentById);
-router.get("/student/:id/result", authToken, getStudentResult);
+router.get("/student", authToken, getStudentById);
+router.get("/student/result", authToken, getStudentResult);
 router.get("/timeline", getStage);
-router.get("/student/:id/choices", authToken, getStudentChoices);
+router.get("/student/choices", authToken, getStudentChoices);
 
 // UPDATE
-router.patch("/student/:id/choices", authToken, updateStudentWithChoices);
-router.patch("/student/:id/verify", authToken, setStudentVerification);
+router.patch("/student/choices", authToken, updateStudentWithChoices);
+router.patch("/student/verify", authToken, setStudentVerification);
 
 export default router;
