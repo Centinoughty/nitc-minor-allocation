@@ -48,7 +48,7 @@ export default function ConfirmPreferences({
         setLoading(true);
         const accessToken = localStorage.getItem("accessToken");
         try{
-            const response = await axios.patch(`${BASE_URL}/students/student/${userId}/choices`, {
+            const response = await axios.patch(`${BASE_URL}/students/student/choices`, {
                 choices: selectedCourses.map(course => course._id),
             },
             {
