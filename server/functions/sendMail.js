@@ -20,5 +20,3 @@ export const sendMail = async (toEmail, subject) => {
 
   console.log("Mail sent to " + toEmail);
 };
-
-sendMail("nadeemvadasseril@gmail.com", "Test Mail");
