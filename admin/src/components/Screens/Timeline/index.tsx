@@ -65,7 +65,7 @@ export default function Timeline() {
             setLoading((prev) => ({ ...prev, submitLoading: true }));
             const response = await fetch(`${BASE_URL}/admin/timeline`,
                 {
-                    method: 'PATCH',
+                    method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
