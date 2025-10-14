@@ -7,37 +7,6 @@ import { getStageFun } from "./settings.js";
 import Setting from "../models/Settings.js";
 import Parameter from "../models/Parameter.js";
 
-export const getStudentsByQuery = async (req, res) => {
-  try {
-    // Get the search term (can be empty string)
-    const query = req.query.term?.trim() || "";
-
-    // If query is empty → return all students
-    if (query === "") {
-      const allStudents = await Student.find({});
-      return res.status(200).json(allStudents);
-    }
-
-    // Otherwise, search by regNo or name (case-insensitive)
-    const students = await Student.find({
-      $or: [
-        { regNo: { $regex: query, $options: "i" } },
-        { name: { $regex: query, $options: "i" } },
-      ],
-    });
-
-    if (!students.length) {
-      return res.status(404).json({ message: "No students found" });
-    }
-
-    res.status(200).json(students);
-  } catch (error) {
-    console.error("Error fetching students:", error);
-    res.status(500).json({ message: "Internal Server Error" });
-  }
-};
-
-
 // UPLOAD
 export const uploadCSV = async (req, res) => {
   try {
