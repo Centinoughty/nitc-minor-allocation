@@ -5,11 +5,13 @@ import {
   getStudentChoices,
   getStudentResult,
   getStudents,
+  getStudentsByQuery,
   setStudentVerification,
   updateStudentWithChoices,
 } from "../controllers/students.js";
 import { getStage } from "../controllers/settings.js";
 import authToken from "../middlewares/authToken.js";
+import { get } from "mongoose";
 // import { getAppTimeline } from "../controllers/settings.js";
 
 const router = express.Router();
@@ -19,6 +21,7 @@ router.post("/csv", createStudentsFromCSV);
 
 // READ
 router.get("/", authToken, getStudents);
+router.get("/search", authToken, getStudentsByQuery);
 router.get("/student", authToken, getStudentById);
 router.get("/student/result", authToken, getStudentResult);
 router.get("/timeline", getStage);

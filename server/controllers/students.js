@@ -3,6 +3,17 @@ import Minor from "../models/Minor.js";
 import { readFromCSV } from "../functions/readFromCSV.js";
 import { getStageFun } from "./settings.js";
 
+export const getStudentsByQuery = async (req, res) => {
+  try {
+    const query = req.query.term;
+
+    // Search function logic
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal Server error" });
+  }
+};
+
 // CREATE
 export const createStudentsFromCSV = async () => {
   try {
@@ -14,7 +25,7 @@ export const createStudentsFromCSV = async () => {
     return true;
   } catch (err) {
     console.log(err);
-	  return false;
+    return false;
     // res.status(409).json({ message: err.message });
   }
 };
@@ -110,24 +121,24 @@ export const getStudentChoices = async (req, res) => {
 // UPDATE
 export const updateStudentWithChoices = async (req, res) => {
   try {
-	  console.log("helooooooooo",req.user);
+    console.log("helooooooooo", req.user);
     const studentId = req.user.id;
     const { choices } = req.body; // expects array of minor ids
     console.log(choices);
     console.log(studentId);
 
-//    const stage = await getStageFun();
+    //    const stage = await getStageFun();
 
-//    if (
-//      stage.stage === "choiceFillingEnd" ||
-//      stage.stage === "resultPublished"
-//    ) {
-//      return res.status(403).json({ message: "Choice filling is closed" });
-//    }
+    //    if (
+    //      stage.stage === "choiceFillingEnd" ||
+    //      stage.stage === "resultPublished"
+    //    ) {
+    //      return res.status(403).json({ message: "Choice filling is closed" });
+    //    }
 
-//    if (stage.stage !== "choiceFilling") {
-//      return res.status(403).json({ message: "Choice filling is not open" });
-//    }
+    //    if (stage.stage !== "choiceFilling") {
+    //      return res.status(403).json({ message: "Choice filling is not open" });
+    //    }
 
     const student = await Student.findById(studentId);
     if (!student) {
@@ -149,7 +160,10 @@ export const updateStudentWithChoices = async (req, res) => {
 
 export const deleteStudentsChoices = async () => {
   try {
-    await Student.updateMany({}, { choices: [], isVerified: false, enrolled: "none" }); 
+    await Student.updateMany(
+      {},
+      { choices: [], isVerified: false, enrolled: "none" }
+    );
     return true;
   } catch (err) {
     console.log(err);
