@@ -124,7 +124,6 @@ export const getStudentChoices = async (req, res) => {
 // UPDATE
 export const updateStudentWithChoices = async (req, res) => {
   try {
-    console.log("helooooooooo", req.user);
     const studentId = req.user.id;
     const { choices } = req.body; // expects array of minor ids
     console.log(choices);
