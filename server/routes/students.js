@@ -5,7 +5,6 @@ import {
   getStudentChoices,
   getStudentResult,
   getStudents,
-  getStudentsByQuery,
   setStudentVerification,
   updateStudentWithChoices,
 } from "../controllers/students.js";
