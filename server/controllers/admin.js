@@ -7,6 +7,32 @@ import { getStageFun } from "./settings.js";
 import Setting from "../models/Settings.js";
 import Parameter from "../models/Parameter.js";
 
+export const getStudentsByQuery = async (req, res) => {
+  try {
+    const query = req.query.term?.trim();
+
+    let students;
+
+    if (query && query !== "") {
+      // Case-insensitive search by name or regNo
+      students = await Student.find({
+        $or: [
+          { name: { $regex: query, $options: "i" } },
+          { regNo: { $regex: query, $options: "i" } },
+        ],
+      }).sort({ createdAt: -1 });
+    } else {
+      // If no query term provided, return all students
+      students = await Student.find().sort({ createdAt: -1 });
+    }
+
+    res.status(200).json(students);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
 // UPLOAD
 export const uploadCSV = async (req, res) => {
   try {

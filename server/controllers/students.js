@@ -3,16 +3,6 @@ import Minor from "../models/Minor.js";
 import { readFromCSV } from "../functions/readFromCSV.js";
 import { getStageFun } from "./settings.js";
 
-export const getStudentsByQuery = async (req, res) => {
-  try {
-    const query = req.query.term;
-
-    // Search function logic
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: "Internal Server error" });
-  }
-};
 
 // CREATE
 export const createStudentsFromCSV = async () => {
