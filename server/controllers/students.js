@@ -32,17 +32,30 @@ export const getStudents = async (req, res) => {
 
     const page = req.query.page ? parseInt(req.query.page) : 1;
     const limit = req.query.limit ? parseInt(req.query.limit) : totalStudents;
+    const searchTerm = req.query.search || ""; // <-- get search term from query
 
-    const students = await Student.find()
+    // Filter students if searchTerm exists
+    let query = {};
+    if (searchTerm) {
+      query = {
+        $or: [
+          { name: { $regex: searchTerm, $options: "i" } }, // case-insensitive
+          { regNo: { $regex: searchTerm, $options: "i" } },
+        ],
+      };
+    }
+
+    const filteredStudents = await Student.find(query)
       .skip((page - 1) * limit)
       .limit(limit);
 
-    // const limitedStudents = students.slice((page - 1) * limit, page * limit);
+    const totalFiltered = await Student.countDocuments(query);
+
     res.status(200).json({
-      students,
+      students: filteredStudents,
       currentPage: page,
-      totalPages: Math.ceil(totalStudents / limit),
-      totalStudents,
+      totalPages: Math.ceil(totalFiltered / limit),
+      totalStudents: totalFiltered,
     });
   } catch (err) {
     res.status(404).json({ message: err.message });
