@@ -3,7 +3,7 @@
 tmux new-session -d -s minor
 
 tmux rename-window -t minor:0 'server'
-tmux send-keys -t minor:0 "cd $PWD/server && nodemon" C-m
+tmux send-keys -t minor:0 "cd $PWD/server && node index.js" C-m
 
 tmux new-window -t minor:1 -n 'client'
 tmux send-keys -t minor:1 "cd $PWD/client && npm start" C-m
