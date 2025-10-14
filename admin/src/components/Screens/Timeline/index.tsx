@@ -14,13 +14,13 @@ import dayjs from 'dayjs';
 import { BASE_URL } from '../../../constants';
 
 type ValuePiece = Date | null;
-type Value = ValuePiece | [ValuePiece, ValuePiece];
-interface Dates {
-    verificationStartDate: ValuePiece;
-    verificationEndDate: ValuePiece;
-    choiceFillingStartDate: ValuePiece;
-    choiceFillingEndDate: ValuePiece;
-}
+// type Value = ValuePiece | [ValuePiece, ValuePiece];
+// interface Dates {
+//     verificationStartDate: ValuePiece;
+//     verificationEndDate: ValuePiece;
+//     choiceFillingStartDate: ValuePiece;
+//     choiceFillingEndDate: ValuePiece;
+// }
 
 const errorNotify = (msg: string) => {
     toast.error(msg, {
