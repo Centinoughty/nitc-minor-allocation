@@ -23,7 +23,7 @@ router.patch("/student/:id", authToken, updateStudentDetails);
 // TIMELINE
 router.post("/timeline", authToken, setTimeline);
 router.get("/timeline", authToken, getTimeline);
-router.put("/timeline", authToken, editTimeline);
+router.patch("/timeline", authToken, editTimeline);
 router.delete("/timeline", authToken, resetTimeline);
 
 export default router;
