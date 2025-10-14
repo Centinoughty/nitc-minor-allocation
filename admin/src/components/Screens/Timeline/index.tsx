@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import dayjs from 'dayjs';
 import { BASE_URL } from '../../../constants';
 
-type ValuePiece = Date | null;
+// type ValuePiece = Date | null;
 // type Value = ValuePiece | [ValuePiece, ValuePiece];
 // interface Dates {
 //     verificationStartDate: ValuePiece;
