@@ -21,7 +21,6 @@ router.post("/csv", createStudentsFromCSV);
 
 // READ
 router.get("/", authToken, getStudents);
-router.get("/search", authToken, getStudentsByQuery);
 router.get("/student", authToken, getStudentById);
 router.get("/student/result", authToken, getStudentResult);
 router.get("/timeline", getStage);
