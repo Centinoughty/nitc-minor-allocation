@@ -18,6 +18,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingSpinner from "../../LoadingIndicator";
 import { BASE_URL } from "../../../constants";
+import { useMediaQuery, Theme } from "@mui/material";
 
 // Filters for search
 const StudentsFilters = [
@@ -42,6 +43,7 @@ const StudentsListAction = ({
   type,
   isUploading,
 }: any) => {
+  const isSmall = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
   const handleDownload = async () => {
     try {
       const response = await axios.get(`${BASE_URL}/admin/download/csv`, {

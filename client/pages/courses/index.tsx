@@ -4,8 +4,11 @@ import { db } from "../../DB/db";
 import axios from "axios";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import CoursesCard from "@/components/Cards/CoursesCard";
+import { useRouter } from "next/router";
+
 
 export default function Courses() {
+  const router = useRouter();
   const [coursesList, setCoursesList] = useState([
     {
       _id: "",
@@ -29,7 +32,7 @@ export default function Courses() {
       if (error.response?.status === 401 || error.response?.status === 403) {
       localStorage.removeItem("accessToken");
       localStorage.removeItem("userId");
-      window.location.href = "/";
+      // router.replace("/");
       }
     }
   };
@@ -43,7 +46,7 @@ export default function Courses() {
       userId == "" ||
       userId.length == 0
     ) {
-      window.location.href = "/";
+      // router.replace("/");
     }
   }, []);
 
