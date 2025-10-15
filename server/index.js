@@ -87,14 +87,6 @@ app.use("/students", studentRoutes);
 app.use("/admin", adminRoutes);
 app.use("/auth", authRoutes);
 
-app.get("/studentwise", (req, res) => {
-  res.redirect(307, "/admin/allocate/students");
-});
-
-app.get("/coursewise", authToken, (req, res) => {
-  res.redirect(307, "/admin/allocate");
-});
-
 // KEEPING THE SERVER BUSY
 // const periodicFunction = async () => {
 //   const response = await fetch(`${process.env.SERVER_URL}/minors`, {
