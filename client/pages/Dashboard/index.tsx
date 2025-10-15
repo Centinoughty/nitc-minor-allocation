@@ -267,27 +267,28 @@ export default function Allotment() {
       case "verification":
         if (studentData === null) return <LoadingSpinner />;
         return (
-          <DetailsCard
-            handleConfirm={handleConfirm}
-            studentData={studentData}
-            verified={verified}
-          />
+          <div className="w-full min-h-screen pb-20 flex flex-col items-center justify-center text-center">
+            {verified ? (
+              <p className="text-green-600 dark:text-green-400 text-lg font-medium">
+                ✅ Your profile is verified
+              </p>
+            ) : (
+              <DetailsCard
+                handleConfirm={handleConfirm}
+                studentData={studentData}
+                verified={verified}
+              />
+            )}
+          </div>
         );
 
       case "verificationEnd":
         if (studentData === null) return <LoadingSpinner />;
         return (
           <div className="w-full min-h-screen pb-20 px-3 flex items-center justify-center text-center">
-            {verified ? (
-              <p className="text-green-600 dark:text-green-400 text-lg font-medium">
-                ✅ Your profile is verified
-              </p>
-            ) : (
-              <p className="dark:text-white text-black text-lg font-medium">
-                ⚠️ Data verification period has ended. You didn’t confirm your
-                profile.
-              </p>
-            )}
+            <p className="dark:text-white text-black">
+              Data verification period has end. Choice Filling not started
+            </p>
           </div>
         );
 
