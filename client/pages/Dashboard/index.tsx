@@ -14,8 +14,6 @@ import { ToastContainer, toast } from "react-toastify";
 import { BASE_URL } from "@/AppConstants";
 import { headers } from "next/headers";
 
-
-
 export default function Allotment() {
   const [loading, setLoading] = useState(true);
   const [activeStep, setActiveStep] = useState(0);
@@ -25,14 +23,23 @@ export default function Allotment() {
   let userId = useSelector((state: any) => state.auth.userId);
 
   React.useEffect(() => {
-    if (userId == null || userId == undefined || userId == "" || userId.length == 0) {
-      userId = localStorage.getItem('userId');
-      if (userId == null || userId == undefined || userId == "" || userId.length == 0) {
-        router.replace("/")
+    if (
+      userId == null ||
+      userId == undefined ||
+      userId == "" ||
+      userId.length == 0
+    ) {
+      userId = localStorage.getItem("userId");
+      if (
+        userId == null ||
+        userId == undefined ||
+        userId == "" ||
+        userId.length == 0
+      ) {
+        router.replace("/");
       }
     }
   }, []);
-
 
   const informNotify = () =>
     toast.info("Please select atleast one course!", {
@@ -76,13 +83,16 @@ export default function Allotment() {
   const fetchUserData = async () => {
     setLoading(true);
     try {
-      const loggedInUserId = await localStorage.getItem('userId');
-      const accessToken = localStorage.getItem('accessToken');
-      const response = await axios.get(`/api/fetchUserData?id=${loggedInUserId}`, {
-        headers: {
-          'Authorization': `Bearer ${accessToken}`
+      const loggedInUserId = await localStorage.getItem("userId");
+      const accessToken = localStorage.getItem("accessToken");
+      const response = await axios.get(
+        `/api/fetchUserData?id=${loggedInUserId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
         }
-      });
+      );
       const data = response.data;
       if (data.choices.length > 0) {
         setIsUserChosenAllotment(true);
@@ -105,10 +115,14 @@ export default function Allotment() {
       setChoiceStatus(data.choices.length > 0 ? "filled" : "notFilled");
     } catch (error: any) {
       console.error(error);
-      if (error.response?.status === 401 || error.response?.status === 403 || error.response?.status === 500) {
+      if (
+        error.response?.status === 401 ||
+        error.response?.status === 403 ||
+        error.response?.status === 500
+      ) {
         localStorage.removeItem("accessToken");
         localStorage.removeItem("userId");
-        router.replace("/")
+        router.replace("/");
       }
     } finally {
       setLoading(false);
@@ -194,7 +208,6 @@ export default function Allotment() {
 
   const [selectedCourses, setSelectedCourses] = useState([]);
 
-
   const handleNext = () => {
     if (selectedCourses.length === 0) {
       informNotify();
@@ -207,25 +220,32 @@ export default function Allotment() {
 
   const fetchChoices = async () => {
     console.log("Fetching Choices");
-    const studentLogginId = await localStorage.getItem('userId');
-    const accessToken = localStorage.getItem('accessToken');
+    const studentLogginId = await localStorage.getItem("userId");
+    const accessToken = localStorage.getItem("accessToken");
     try {
-      const response = await axios.get(`/api/fetchAllChoices?id=${studentLogginId}`, {
-        headers: {
-          'Authorization': `Bearer ${accessToken}`
+      const response = await axios.get(
+        `/api/fetchAllChoices?id=${studentLogginId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
         }
-      });
+      );
       const data = response.data;
       console.log("Response: ", response);
       setAllChoices(data);
     } catch (error: any) {
-      if (error.response?.status === 401 || error.response?.status === 403 || error.response?.status === 500  ) {
+      if (
+        error.response?.status === 401 ||
+        error.response?.status === 403 ||
+        error.response?.status === 500
+      ) {
         // token invalid
         localStorage.clear();
-        router.replace("/")
+        router.replace("/");
       }
     }
-  }
+  };
 
   useEffect(() => {
     fetchChoices();
@@ -258,9 +278,16 @@ export default function Allotment() {
         if (studentData === null) return <LoadingSpinner />;
         return (
           <div className="w-full min-h-screen pb-20 px-3 flex items-center justify-center text-center">
-            <p className="dark:text-white text-black">
-              Data verification period has end. Choice Filling not started
-            </p>
+            {verified ? (
+              <p className="text-green-600 dark:text-green-400 text-lg font-medium">
+                ✅ Your profile is verified
+              </p>
+            ) : (
+              <p className="dark:text-white text-black text-lg font-medium">
+                ⚠️ Data verification period has ended. You didn’t confirm your
+                profile.
+              </p>
+            )}
           </div>
         );
 
@@ -314,25 +341,22 @@ export default function Allotment() {
     //   setActiveStep(activeStep + 1);
     //   setStep(step + 1);
     // }, 1000);
-    const returnVal = confirm('Are you sure you want to verify your details?'); 
+    const returnVal = confirm("Are you sure you want to verify your details?");
     if (!returnVal) return;
-  const loggedInUser = localStorage.getItem('userId');
-  const accessToken = localStorage.getItem('accessToken');
+    const loggedInUser = localStorage.getItem("userId");
+    const accessToken = localStorage.getItem("accessToken");
     try {
-      const response = await fetch(
-        `${BASE_URL}/students/student/verify`,
-        {
-          method: "PATCH",
-          headers: {
-            'Authorization': `Bearer ${accessToken}`
-          }
-        }
-      );
+      const response = await fetch(`${BASE_URL}/students/student/verify`, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
 
       if (response.status === 200) {
         alert("Successfully verified");
         setVerified(true);
-      } else{
+      } else {
         // token invalid
         localStorage.removeItem("accessToken");
         localStorage.removeItem("userId");
@@ -387,7 +411,6 @@ export default function Allotment() {
                   Your Choices:
                 </p>
                 <div className="min-w-1/2 grid grid-cols-1 gap-4">
-
                   {allChoices.map((course: any, index: number) => (
                     <CoursesCard key={index} course={course} />
                   ))}
