@@ -62,6 +62,7 @@ export const getStudents = async (req, res) => {
   }
 };
 
+
 export const getStudentById = async (req, res) => {
   try {
     const studentId = req.user.id;
