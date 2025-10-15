@@ -104,7 +104,8 @@ export const DataProvider = (apiUrl: string) => {
         }
       }
       else if (resource === "students") {
-        const url = `${apiUrl}/students?page=${page}&limit=${perPage}`;
+        const searchTerm = params.filter.q || "";
+        const url = `${apiUrl}/students?page=${page}&limit=${perPage}&search=${encodeURIComponent(searchTerm)}`;
         try {
           const response = await fetch(url, { headers });
 

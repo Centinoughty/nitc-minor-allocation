@@ -23,7 +23,7 @@ import { useMediaQuery, Theme } from "@mui/material";
 // Filters for search
 const StudentsFilters = [
   <SearchInput
-    source="term"
+    source="q"          // <-- match DataProvider
     alwaysOn
     key="search"
     placeholder="Search by name or Reg No"
