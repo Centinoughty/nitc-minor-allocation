@@ -53,7 +53,8 @@ export const DataProvider = (apiUrl: string) => {
       });
 
       if (resource === "studentwise") {
-        const url = `${apiUrl}/admin/allocate/students?max=${maxStudents}&min=${minStudents}&page=${page}&limit=${perPage}`;
+        const searchTerm = params.filter.q || ""; 
+        const url = `${apiUrl}/admin/allocate/students?max=${maxStudents}&min=${minStudents}&page=${page}&limit=${perPage}&search=${encodeURIComponent(searchTerm)}`;
 
         try {
           const response = await fetch(url, { headers });
