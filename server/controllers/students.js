@@ -2,7 +2,7 @@ import Student from "../models/Student.js";
 import Minor from "../models/Minor.js";
 import { readFromCSV } from "../functions/readFromCSV.js";
 import { getStageFun } from "./settings.js";
-
+import { sendMail } from "../functions/sendMail.js";
 
 // CREATE
 export const createStudentsFromCSV = async () => {
@@ -61,7 +61,6 @@ export const getStudents = async (req, res) => {
     res.status(404).json({ message: err.message });
   }
 };
-
 
 export const getStudentById = async (req, res) => {
   try {
@@ -179,6 +178,7 @@ export const setStudentVerification = async (req, res) => {
     const studentId = req.user.id;
     const student = await Student.findById(studentId);
 
+    console.log(student);
     const stage = await getStageFun();
     if (stage.stage !== "verification") {
       return res.status(403).json({ message: "Verification is not open" });
@@ -188,6 +188,8 @@ export const setStudentVerification = async (req, res) => {
       return res.status(404).json({ message: "Student not found" });
     }
     student.isVerified = true;
+
+    sendMail(student.email, "Your profile has been verified.");
     await student.save();
     res.status(200).json(student);
   } catch (err) {
