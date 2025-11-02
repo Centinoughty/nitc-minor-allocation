@@ -189,8 +189,8 @@ export const setStudentVerification = async (req, res) => {
     }
     student.isVerified = true;
 
-    sendMail(student.email, "Your profile has been verified.");
     await student.save();
+    sendMail(student.email, "Your profile has been verified.");
     res.status(200).json(student);
   } catch (err) {
     console.log(err);
