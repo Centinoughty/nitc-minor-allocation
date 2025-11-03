@@ -36,7 +36,7 @@ export const readFromCSV = (filePath) => {
             try {
               parsedDateOfBirth = parse(
                 student.dateOfBirth,
-                dateFormats[2],
+                dateFormats[1],
                 new Date()
               );
               if (isNaN(parsedDateOfBirth)) {
