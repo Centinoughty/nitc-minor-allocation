@@ -258,7 +258,7 @@ export default function Allotment() {
         if (studentData === null) return <LoadingSpinner />;
         return (
           <div className="w-full min-h-screen pb-20 flex items-center justify-center">
-            <p className="dark:text-white text-black">
+            <p className="dark:text-white text-black text-lg">
               Minor allocation not started yet
             </p>
           </div>
@@ -269,7 +269,7 @@ export default function Allotment() {
         return (
           <div className="w-full min-h-screen pb-20 flex flex-col items-center justify-center text-center">
             {verified ? (
-              <p className="text-green-600 dark:text-green-400 text-lg font-medium">
+              <p className="text-green-600 dark:text-green-400 text-lg font-medium text-lg">
                 ✅ Your profile is verified
               </p>
             ) : (
@@ -286,7 +286,7 @@ export default function Allotment() {
         if (studentData === null) return <LoadingSpinner />;
         return (
           <div className="w-full min-h-screen pb-20 px-3 flex items-center justify-center text-center">
-            <p className="dark:text-white text-black">
+            <p className="dark:text-white text-black text-lg">
               Data verification period has end. Choice Filling not started
             </p>
           </div>
@@ -315,7 +315,7 @@ export default function Allotment() {
         if (studentData === null) return <LoadingSpinner />;
         return (
           <div className="w-full min-h-screen pb-20 flex flex-col items-center justify-center text-center">
-            <p className="dark:text-white text-black">
+            <p className="dark:text-white text-black text-lg">
               Choice Filling process finished. Result has not published
             </p>
           </div>
@@ -326,7 +326,7 @@ export default function Allotment() {
         if (userAlloted.isAlloted == false) {
           return (
             <div className="w-full min-h-screen pb-20 flex flex-col items-center justify-center">
-              <p className="dark:text-white text-black">
+              <p className="dark:text-white text-black text-lg">
                 Sorry, you don't have any Minor alloted
               </p>
             </div>
