@@ -308,11 +308,6 @@ export default function Allotment() {
             loading={loading}
             setLoading={(value: boolean) => setLoading(value)}
             selectedCourses={selectedCourses}
-            onConfirmed={() => {
-    setChoiceStatus("filled");  // immediately mark as filled
-    setIsUserChosenAllotment(true);
-    setAllChoices(selectedCourses); // update shown choices without refetching
-  }}
           />
         );
 
