@@ -12,12 +12,12 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-export const sendMail = async (toEmail, subject) => {
+export const sendMail = async (toEmail, subject, body) => {
   await transporter.sendMail({
     from: "Minors NITC <minors@nitc.ac.in>",
     to: toEmail,
     subject: subject,
-    text: "This is a system generated email. Please do not reply to this email.",
+    text: `${body}  \n\n This is a system generated email. Please do not reply to this.`,
   });
 
   console.log("Mail sent to " + toEmail);

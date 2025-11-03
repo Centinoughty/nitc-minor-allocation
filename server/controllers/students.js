@@ -154,13 +154,13 @@ export const updateStudentWithChoices = async (req, res) => {
     student.choices = choices;
     await student.save();
    const minors = await Minor.find({ _id: { $in: choices } });
-    const minorNames = minors.map((m) => m.name).join(", ");
+    const minorNames = minors.map((m) => m.name).join("\n ");
 
     // Construct the message (subject line)
-    const message = `Your choices have been updated successfully.\nSelected Minors: ${minorNames}`;
+    const message = `Dear Student,\n\nYour choices for the minor programme have been succesfully filled.\nSelected Minors: ${minorNames}`;
 
     // Send mail (don’t modify sendMail function)
-    sendMail(student.email, message);
+    sendMail(student.email, "Succesfully filled your choices for the minor programme", message);
 
     res.status(200).json(student);
   } catch (err) {
@@ -199,7 +199,7 @@ export const setStudentVerification = async (req, res) => {
     student.isVerified = true;
 
     await student.save();
-    sendMail(student.email, "Your profile has been verified.");
+    sendMail(student.email, "Your profile has been succesfully verified.", "Dear Student,\n\nYour Profile has been succesfully verified.\n\nThis is a system generated email. Please do not reply to this email.");
     res.status(200).json(student);
   } catch (err) {
     console.log(err);
