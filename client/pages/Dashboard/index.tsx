@@ -293,33 +293,28 @@ export default function Allotment() {
         );
 
       case "choiceFilling":
-  return choiceStatus === "notFilled" ? (
-    <>
-      <DragAndDrop
-        allCourses={allCourses}
-        setAllCourses={setAllCourses}
-        widgets={selectedCourses}
-        setWidgets={(value: any) => setSelectedCourses(value)}
-      />
-      <Footer handleNext={handleNext} loading={loading} />
-    </>
-  ) : choiceStatus === "filled" ? (
-    <>
-      <p className="text-green-600 font-semibold text-center mt-6">
-        ✅ Choices Filled Successfully!
-      </p>
-      <ConfirmAllotment
-        loading={loading}
-        setLoading={(value: boolean) => setLoading(value)}
-        selectedCourses={selectedCourses}
-        onConfirmed={() => setChoiceStatus("submitted")}
-      />
-    </>
-  ) : (
-    <p className="text-blue-600 font-semibold text-center mt-6">
-      🎉 Choices Submitted!
-    </p>
-  );
+        return choiceStatus === "notFilled" ? (
+          <>
+            <DragAndDrop
+              allCourses={allCourses}
+              setAllCourses={setAllCourses}
+              widgets={selectedCourses}
+              setWidgets={(value: any) => setSelectedCourses(value)}
+            />
+            <Footer handleNext={handleNext} loading={loading} />
+          </>
+        ) : (
+          <ConfirmAllotment
+            loading={loading}
+            setLoading={(value: boolean) => setLoading(value)}
+            selectedCourses={selectedCourses}
+            onConfirmed={() => {
+    setChoiceStatus("filled");  // immediately mark as filled
+    setIsUserChosenAllotment(true);
+    setAllChoices(selectedCourses); // update shown choices without refetching
+  }}
+          />
+        );
 
       case "choiceFillingEnd":
         if (studentData === null) return <LoadingSpinner />;
