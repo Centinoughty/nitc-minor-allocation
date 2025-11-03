@@ -47,7 +47,7 @@ export default function CoursesCard({ course }: CoursesCardProps) {
         <h2 className={`text-xl font-bold dark:text-white text-black`}>
           {course.name}
         </h2>
-        <p className="text-sm text-gray-500">Faculty: {course.faculty}</p>
+        <p className="text-sm text-gray-500">Faculty Coordinator for B24 Students: {course.faculty}</p>
         <p className="text-sm text-gray-500">Email: {course.facultyEmail}</p>
       </div>
       <div className="flex flex-col align-center justify-center ">
