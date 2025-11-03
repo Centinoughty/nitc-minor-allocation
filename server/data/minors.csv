@@ -1,4 +1,12 @@
 name,code,department,faculty,facultyEmail,facultyContact,credit,description,schedule
-Minor in Computer Science,CS,Computer Science,Dr. John Doe,johndoe@gmail.com,1234567890,20,This minor is designed for students who want to learn the basics of computer science,Monday/Wednesday/Friday 10:00 AM - 12:00 PM
-Minor in Mathematics,MA,Mathematics,Dr. Jane Doe,jane@gmail.com,1234567890,20,This minor is designed for students who want to learn the basics of mathematics,Monday/Wednesday/Friday 10:00 AM - 12:00 PM
-Minor in Physics,PH,Physics,Dr. Antony Joe,antony@gmail.com,1234567890,20,This minor is designed for students who want to learn the basics of physics,Monday/Tuesday/Friday 10:00 AM - 12:00 PM
+Artificial Intelligence & Machine Learning,CS,Computer Science,Dr. Jayaraj P B,jayarajpb@nitc.ac.in,1234567890,20,This minor is designed for students who want to learn the basics of computer science,Monday/Wednesday/Friday 10:00 AM - 12:00 PM
+Alternative Energy Technology,MA,Mathematics,Dr. Vinod E Madhavan,vinodem@nitc.ac.in,1234567890,20,This minor is designed for students who want to learn the basics of mathematics,Monday/Wednesday/Friday 10:00 AM - 12:00 PM
+Cyber Physical Systems,PH,Physics,Dr. Vinod P,pathari@nitc.ac.in,1234567890,20,This minor is designed for students who want to learn the basics of physics,Monday/Tuesday/Friday 10:00 AM - 12:00 PM
+Robotics and Automation,CS,Computer Science,Dr. Raghu C. V.,raghucv@nitc.ac.in,1234567890,20,This minor is designed for students who want to learn the basics of computer science,Monday/Wednesday/Friday 10:00 AM - 12:00 PM
+Smart Mobility and Electric Vehicle Engineering,MA,Mathematics,Dr. Nikhil Sasidharan,nikhils@nitc.ac.in,1234567890,20,This minor is designed for students who want to learn the basics of mathematics,Monday/Wednesday/Friday 10:00 AM - 12:00 PM
+Geoinformatics,PH,Physics,Dr. Bimal P.,bimalp@nitc.ac.in,1234567890,20,This minor is designed for students who want to learn the basics of physics,Monday/Tuesday/Friday 10:00 AM - 12:00 PM
+Building Systems Engineering,CS,Computer Science,Dr. Naseer M A,nikhils@nitc.ac.in,1234567890,20,This minor is designed for students who want to learn the basics of computer science,Monday/Wednesday/Friday 10:00 AM - 12:00 PM
+Entrepreneurship & Business Analytics,MA,Mathematics,Dr Althaf S,althaf@nitc.ac.in,1234567890,20,This minor is designed for students who want to learn the basics of mathematics,Monday/Wednesday/Friday 10:00 AM - 12:00 PM
+Computational and Systems Biology,PH,Physics,Dr. Gokulraj S,gokulrajs@nitc.ac.in,1234567890,20,This minor is designed for students who want to learn the basics of physics,Monday/Tuesday/Friday 10:00 AM - 12:00 PM
+Photonics and Optical Engineering,CS,Computer Science,Dr. Natesan Yogesh,yogesh@nitc.ac.in,1234567890,20,This minor is designed for students who want to learn the basics of computer science,Monday/Wednesday/Friday 10:00 AM - 12:00 PM
+Unmanned Aerial Systems (UAS) and Technologies,MA,Mathematics,Dr. Rakesh R Warier,rakeshw@nitc.ac.in,1234567890,20,This minor is designed for students who want to learn the basics of mathematics,Monday/Wednesday/Friday 10:00 AM - 12:00 PM
