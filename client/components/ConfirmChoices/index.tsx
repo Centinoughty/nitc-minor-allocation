@@ -12,12 +12,14 @@ interface ConfirmPreferencesProps {
     loading: boolean;
     setLoading: any;
     selectedCourses: any[];
+     onConfirmed?: () => void;
 }
 
 export default function ConfirmPreferences({
     loading,
     setLoading,
-    selectedCourses
+    selectedCourses,
+    onConfirmed,
 }: ConfirmPreferencesProps) {
 
     const [isConfirmed, setIsConfirmed] = useState(false);
@@ -64,6 +66,7 @@ export default function ConfirmPreferences({
                     confirmNotify();
                 }, 300);
                 setIsConfirmed(true);
+                if(onConfirmed) onConfirmed();
             }else{
                 console.log("Failed to confirm preferences");
                 alert("Failed to confirm preferences");
