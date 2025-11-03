@@ -17,7 +17,7 @@ export const sendMail = async (toEmail, subject, body) => {
     from: "Minors NITC <minors@nitc.ac.in>",
     to: toEmail,
     subject: subject,
-    text: `${body}  \n\n This is a system generated email. Please do not reply to this.`,
+    text: `${body}\n\nThis is a system generated email. Please do not reply to this email.`,
   });
 
   console.log("Mail sent to " + toEmail);

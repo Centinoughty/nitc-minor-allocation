@@ -64,6 +64,7 @@ export default function ConfirmPreferences({
                     confirmNotify();
                 }, 300);
                 setIsConfirmed(true);
+                window.location.reload();
             }else{
                 console.log("Failed to confirm preferences");
                 alert("Failed to confirm preferences");
