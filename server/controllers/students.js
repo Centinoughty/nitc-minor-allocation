@@ -154,7 +154,7 @@ export const updateStudentWithChoices = async (req, res) => {
     student.choices = choices;
     await student.save();
     const minors = await Minor.find({ _id: { $in: choices } });
-    const minorNames = minors.map((m) => m.name).join("\n ");
+    const minorNames = minors.map((m) => m.name).join("\n");
 
     // Construct the message (subject line)
     const message = `Dear Student,\n\nYour choices for the minor programme have been succesfully filled.\nSelected Minors:\n${minorNames}`;
