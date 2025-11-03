@@ -153,15 +153,6 @@ export const updateStudentWithChoices = async (req, res) => {
 
     student.choices = choices;
     await student.save();
-   const minors = await Minor.find({ _id: { $in: choices } });
-    const minorNames = minors.map((m) => m.name).join(", ");
-
-    // Construct the message (subject line)
-    const message = `Your choices have been updated successfully.\nSelected Minors: ${minorNames}`;
-
-    // Send mail (don’t modify sendMail function)
-    sendMail(student.email, message);
-
     res.status(200).json(student);
   } catch (err) {
     console.log(err);
