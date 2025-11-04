@@ -6,7 +6,6 @@ import { Parser } from "json2csv";
 import { getStageFun } from "./settings.js";
 import Setting from "../models/Settings.js";
 import Parameter from "../models/Parameter.js";
-import { SendMail } from "../functions/sendMail.js";
 
 // UPLOAD
 export const uploadCSV = async (req, res) => {
