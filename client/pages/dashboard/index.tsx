@@ -269,7 +269,7 @@ export default function Allotment() {
         return (
           <div className="w-full min-h-screen pb-20 flex flex-col items-center justify-center text-center">
             {verified ? (
-              <p className="text-green-600 dark:text-green-400 text-lg font-medium text-lg">
+              <p className="text-green-600 dark:text-green-400 text-lg font-medium">
                 ✅ Your profile is verified
               </p>
             ) : (
