@@ -69,7 +69,7 @@ export default function Courses() {
           <h1
             className={`text-3xl font-bold text-center mb-10 dark:text-white text-black mt-10`}
           >
-            Courses
+            Minor Courses
           </h1>
           <div className="grid grid-cols-1 gap-4">
             {coursesList.map((course) => (
