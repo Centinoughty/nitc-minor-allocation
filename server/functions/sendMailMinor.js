@@ -8,7 +8,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 import Student from "../models/Student.js";
-import sendMail from "./sendMail.js";
+import { sendMail } from "./sendMail.js";
 
 dotenv.config();
 
