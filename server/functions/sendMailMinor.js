@@ -4,11 +4,13 @@ if no course is enrolled, say you are not alloted in any course
 if course is alloted, say you are alloted in course x
 */
 
-const mongoose = require("mongoose");
-require("dotenv").config();
+import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-const Student = require("../models/Student");
-const sendMail = require("./sendMail");
+import Student from "../models/Student.js";
+import sendMail from "./sendMail.js";
+
+dotenv.config();
 
 const minors = {
   "6908b7d2c9d3b9cac5bcb9ec": "Unmanned Aerial Systems (UAS) and Technologies",
