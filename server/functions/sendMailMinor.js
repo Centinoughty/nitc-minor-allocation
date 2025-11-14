@@ -55,7 +55,7 @@ const sendMailToStudents = async () => {
   const students = await Student.find({ choices: { $ne: [] } });
 
   for (const student of students) {
-    if (student.email && !tmpList.includes(student.email)) {
+    if (student.email && tmpList.includes(student.email)) {
       continue;
     }
 
